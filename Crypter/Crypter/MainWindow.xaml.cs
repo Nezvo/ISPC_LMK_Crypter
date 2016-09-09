@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Security.Cryptography;
 
 namespace Crypter
 {
@@ -20,10 +10,12 @@ namespace Crypter
 	public partial class MainWindow : Window
 	{
 		#region initialization
+
 		int z = 0;
 		string selectedKey = null;
 
 		#region Defining Keys
+
 		private List<string> lmkPair = new List<string>
 		{
 			"01010101010101017902CD1FD36EF8BA",
@@ -59,31 +51,21 @@ namespace Crypter
 			{"75", "54", "34", "15", "F4", "D5", "B5", "94", "68", "75", "76", "73", "67", "62", "6E", "57", "52", "5E", "5B", "75"},
 			{"9D", "BC", "DC", "FD", "1C", "3D", "5D", "7C", "80", "9D", "9E", "9B", "8F", "8A", "86", "BF", "BA", "B6", "B3", "9D"}
 		};
+
 		#endregion
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
-			#region Predefined Types
-			comboBoxKeyType.Items.Add("AC");
-			comboBoxKeyType.Items.Add("SMI");
-			comboBoxKeyType.Items.Add("SMC");
-			comboBoxKeyType.Items.Add("DAC");
-			comboBoxKeyType.Items.Add("IDN");
-			comboBoxKeyType.Items.Add("ZPK");
-			#endregion
-
 			#region ComboBoxFill
+
 			for (int i = 0; i < lmkPair.Count; i++)
-			{
 				comboBoxPair.Items.Add(z++ + "-" + z++);
-			}
 
 			for (int i = 0; i < 9;)
-			{
 				comboBoxVariant.Items.Add(i++);
-			}
+
 			#endregion
 		}
 		#endregion
@@ -126,7 +108,7 @@ namespace Crypter
 					string kcvHex = BitConverter.ToString(kcv);
 					kcvHex = kcvHex.Replace("-", "");
 
-					labelKCV.Content = kcvHex.Substring(0, 6); 
+					labelKCV.Content = kcvHex.Substring(0, 6);
 				}
 
 				if (!string.IsNullOrWhiteSpace(textBoxOutput.Text))
@@ -136,7 +118,7 @@ namespace Crypter
 				}
 				else btnCopyOutput.IsEnabled = false;
 			}
-			
+
 		}
 
 		private void btnDecrypt_Click(object sender, RoutedEventArgs e)
@@ -153,7 +135,7 @@ namespace Crypter
 			{
 				MessageBox.Show("Input is not hex");
 			}
-			else if(textBoxInput.Text.Length != 32)
+			else if (textBoxInput.Text.Length != 32)
 			{
 				MessageBox.Show("Input must be 16 Bytes long");
 			}
@@ -182,7 +164,10 @@ namespace Crypter
 					btnCopyOutput.IsEnabled = true;
 					btnCopyKCV.IsEnabled = true;
 				}
-				else btnCopyOutput.IsEnabled = false;
+				else
+				{
+					btnCopyOutput.IsEnabled = false;
+				}
 			}
 		}
 
@@ -209,6 +194,7 @@ namespace Crypter
 		#endregion
 
 		#region comboBox handlers
+
 		private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			if (comboBoxKeyType.SelectedIndex > -1)
@@ -222,29 +208,25 @@ namespace Crypter
 				{
 					case 0:
 						selectedKey = "BC" + lmkPair[14].Substring(2);
-						labelKEY.Content = selectedKey;
 						break;
 					case 1:
 						selectedKey = "40" + lmkPair[14].Substring(2);
-						labelKEY.Content = selectedKey;
 						break;
 					case 2:
 						selectedKey = "70" + lmkPair[14].Substring(2);
-						labelKEY.Content = selectedKey;
 						break;
 					case 3:
 						selectedKey = "4A" + lmkPair[14].Substring(2);
-						labelKEY.Content = selectedKey;
 						break;
 					case 4:
 						selectedKey = "6E" + lmkPair[14].Substring(2);
-						labelKEY.Content = selectedKey;
 						break;
 					case 5:
 						selectedKey = lmkPair[3];
-						labelKEY.Content = selectedKey;
 						break;
 				}
+
+				labelKEY.Content = selectedKey;
 			}
 		}
 
@@ -260,13 +242,17 @@ namespace Crypter
 
 		private void comboBoxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if (comboBoxVariant.SelectedIndex > 0 && comboBoxPair.SelectedIndex > -1)
+			if (comboBoxVariant.SelectedIndex == 0 && comboBoxPair.SelectedIndex > -1)
+			{
+				selectedKey = lmkPair[comboBoxPair.SelectedIndex];
+				labelKEY.Content = selectedKey;
+			}
+			else if (comboBoxVariant.SelectedIndex > 0 && comboBoxPair.SelectedIndex > -1)
 			{
 				selectedKey = lmkVariant[comboBoxVariant.SelectedIndex - 1, comboBoxPair.SelectedIndex] + selectedKey.Substring(2);
 				labelKEY.Content = selectedKey;
 			}
 		}
-
 
 		#endregion
 
@@ -274,6 +260,12 @@ namespace Crypter
 		{
 			Clipboard.Clear();
 			Clipboard.SetText(labelKCV.Content.ToString());
+		}
+
+		private void textBoxInput_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+		{
+			int hexNumber;
+			e.Handled = !int.TryParse(e.Text, NumberStyles.HexNumber, CultureInfo.CurrentCulture, out hexNumber);
 		}
 	}
 }
