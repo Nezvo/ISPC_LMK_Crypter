@@ -189,7 +189,6 @@ namespace Crypter
 
 			comboBoxPair.SelectedIndex = -1;
 			comboBoxVariant.SelectedIndex = -1;
-			comboBoxKeyType.SelectedIndex = -1;
 		}
 		#endregion
 
@@ -232,6 +231,8 @@ namespace Crypter
 
 		private void comboBoxPair_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			comboBoxKeyType.SelectedIndex = -1;
+
 			if (comboBoxPair.SelectedIndex > -1)
 			{
 				selectedKey = lmkPair[comboBoxPair.SelectedIndex];
@@ -242,6 +243,8 @@ namespace Crypter
 
 		private void comboBoxVariant_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			comboBoxKeyType.SelectedIndex = -1;
+
 			if (comboBoxVariant.SelectedIndex == 0 && comboBoxPair.SelectedIndex > -1)
 			{
 				selectedKey = lmkPair[comboBoxPair.SelectedIndex];
