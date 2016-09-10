@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Crypter"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
-    </Application.Resources>
+		<ResourceDictionary Source="BlackCrystal.xaml"></ResourceDictionary>
+	</Application.Resources>
 </Application>
