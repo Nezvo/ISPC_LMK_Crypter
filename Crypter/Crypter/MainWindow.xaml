@@ -6,26 +6,26 @@
         xmlns:local="clr-namespace:Crypter"
         mc:Ignorable="d"
         Title="LMK Crypto by Zvone" Height="247.875" Width="525" ResizeMode="NoResize">
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="283*"/>
-			<ColumnDefinition Width="234*"/>
-		</Grid.ColumnDefinitions>
-		<Label x:Name="lblPair" Content="LMK Pair:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-		<ComboBox x:Name="comboBoxPair" HorizontalAlignment="Left" Margin="74,46,0,0" VerticalAlignment="Top" Width="70" SelectionChanged="comboBoxPair_SelectionChanged" Visibility="Hidden"/>
-		<Label x:Name="lblVariant" Content="Variant:" HorizontalAlignment="Left" Margin="154,46,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-		<ComboBox x:Name="comboBoxVariant" HorizontalAlignment="Left" Margin="209,46,0,0" VerticalAlignment="Top" Width="40" SelectionChanged="comboBoxVariant_SelectionChanged" IsSynchronizedWithCurrentItem="False" Visibility="Hidden"/>
-		<Label x:Name="label2" Content="Input:" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
-		<TextBox x:Name="textBoxInput" HorizontalAlignment="Left" Height="25" MaxLength="32" Margin="92,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2" PreviewTextInput="textBoxInput_PreviewTextInput" FontSize="14"/>
-		<Button x:Name="btnDecrypt" Content="Decrypt" HorizontalAlignment="Left" Margin="124,108,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnDecrypt_Click" Height="23"/>
-		<TextBox x:Name="textBoxOutput" HorizontalAlignment="Left" Height="25" Margin="92,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2" IsReadOnly="True" FontSize="14"/>
-		<Label x:Name="label3" Content="Output:" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
-		<Button x:Name="btnCopyOutput" Content="Copy" HorizontalAlignment="Left" Margin="124,139,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" IsEnabled="False" Click="btnCopyOutput_Click" Height="23"/>
-		<Label x:Name="label4" Content="KCV:" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.321,-0.424"/>
-		<Label x:Name="labelKCV" Content="" HorizontalAlignment="Left" Margin="92,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.165,0.558" Grid.ColumnSpan="2" Width="270" FontSize="14"/>
-		<Label x:Name="label5" Content="Selected KEY:" HorizontalAlignment="Left" Margin="7,77,0,0" VerticalAlignment="Top"/>
-		<Label x:Name="labelKEY" Content="" HorizontalAlignment="Left" Margin="93,77,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="269" FontSize="14"/>
-		<Label x:Name="label6" Content="Predefined Key Type:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="283*"/>
+            <ColumnDefinition Width="234*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblPair" Content="LMK Pair:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <ComboBox x:Name="comboBoxPair" HorizontalAlignment="Left" Margin="74,46,0,0" VerticalAlignment="Top" Width="70" SelectionChanged="comboBoxPair_SelectionChanged" Visibility="Hidden"/>
+        <Label x:Name="lblVariant" Content="Variant:" HorizontalAlignment="Left" Margin="154,46,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <ComboBox x:Name="comboBoxVariant" HorizontalAlignment="Left" Margin="209,46,0,0" VerticalAlignment="Top" Width="40" SelectionChanged="comboBoxVariant_SelectionChanged" IsSynchronizedWithCurrentItem="False" Visibility="Hidden"/>
+        <Label x:Name="label2" Content="Input:" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxInput" HorizontalAlignment="Left" Height="23" MaxLength="32" Margin="92,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2" PreviewTextInput="textBoxInput_PreviewTextInput"/>
+        <Button x:Name="btnDecrypt" Content="Decrypt" HorizontalAlignment="Left" Margin="96,108,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnDecrypt_Click" Height="23"/>
+        <TextBox x:Name="textBoxOutput" HorizontalAlignment="Left" Height="23" Margin="92,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Grid.ColumnSpan="2" IsReadOnly="True"/>
+        <Label x:Name="label3" Content="Output:" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCopyOutput" Content="Copy" HorizontalAlignment="Left" Margin="96,139,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" IsEnabled="False" Click="btnCopyOutput_Click" Height="23"/>
+        <Label x:Name="label4" Content="KCV:" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.321,-0.424"/>
+        <Label x:Name="labelKCV" Content="" HorizontalAlignment="Left" Margin="92,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.165,0.558" Grid.ColumnSpan="2" Width="270"/>
+        <Label x:Name="label5" Content="Selected KEY:" HorizontalAlignment="Left" Margin="7,77,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelKEY" Content="" HorizontalAlignment="Left" Margin="93,77,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="269"/>
+        <Label x:Name="label6" Content="Predefined Key Type:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 		<ComboBox x:Name="comboBoxKeyType" HorizontalAlignment="Left" Margin="136,14,0,0" VerticalAlignment="Top" Width="50" SelectionChanged="comboBox_SelectionChanged">
 			<ComboBoxItem>AC</ComboBoxItem>
 			<ComboBoxItem>SMI</ComboBoxItem>
@@ -34,9 +34,9 @@
 			<ComboBoxItem>IDN</ComboBoxItem>
 			<ComboBoxItem>ZPK</ComboBoxItem>
 		</ComboBox>
-		<Button x:Name="btnExpertMode" Content="Manual Selection" HorizontalAlignment="Left" Margin="69,14,0,0" VerticalAlignment="Top" Width="130" Click="buttonExpertMode_Click" Grid.Column="1" Height="34"/>
-		<Button x:Name="btnEncrypt" Content="Encrypt" Grid.Column="1" HorizontalAlignment="Left" Margin="124,77,0,0" VerticalAlignment="Top" Width="75" Click="btnEncrypt_Click" Height="22"/>
-		<Button x:Name="btnCopyKCV" Content="Copy KCV" Grid.Column="1" HorizontalAlignment="Left" Margin="124,170,0,0" VerticalAlignment="Top" Width="75" Click="btnKCV_Click" IsCancel="True" IsEnabled="False" Height="23"/>
+        <Button x:Name="btnExpertMode" Content="Manual Selection" HorizontalAlignment="Left" Margin="69,14,0,0" VerticalAlignment="Top" Width="102" Click="buttonExpertMode_Click" Grid.Column="1"/>
+        <Button x:Name="btnEncrypt" Content="Encrypt" Grid.Column="1" HorizontalAlignment="Left" Margin="96,79,0,0" VerticalAlignment="Top" Width="75" Click="btnEncrypt_Click"/>
+		<Button x:Name="btnCopyKCV" Content="Copy KCV" Grid.Column="1" HorizontalAlignment="Left" Margin="96,170,0,0" VerticalAlignment="Top" Width="75" Click="btnKCV_Click" IsCancel="True" IsEnabled="False" Height="23"/>
 
 	</Grid>
 </Window>

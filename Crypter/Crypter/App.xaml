@@ -3,7 +3,4 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Crypter"
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
-		<ResourceDictionary Source="BlackCrystal.xaml"></ResourceDictionary>
-	</Application.Resources>
 </Application>
